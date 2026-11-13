@@ -1,0 +1,52 @@
+# ==============================================================================
+# Terraform Variables Example: PSC NEG Backend for Google APIs
+# ==============================================================================
+
+project_id   = "encoded-alpha-457108-e8"
+region       = "us-central1"
+zone         = "us-central1-a"
+network_name = "psc-neg-vpc"
+
+# ------------------------------------------------------------------------------
+# Example 1: Multi-Regional Google API Target (Google Cloud Storage)
+# ------------------------------------------------------------------------------
+psc_target_service = "storage.googleapis.com"
+dns_zone_name      = "internal-example-zone"
+dns_domain         = "internal.example.com"
+custom_domain      = "storage.internal.example.com"
+
+# ------------------------------------------------------------------------------
+# Example 2: Regional Google API Target (Regional Cloud KMS)
+# Uncomment below to use a Regional Google API target instead:
+# ------------------------------------------------------------------------------
+# psc_target_service = "cloudkms.us-central1.rep.googleapis.com"
+# custom_domain      = "kms.internal.example.com"
+
+# ------------------------------------------------------------------------------
+# Cloud Armor Allowed Client CIDR Blocks
+# ------------------------------------------------------------------------------
+cloud_armor_allowed_ip_ranges = [
+  "10.0.0.0/8",
+  "172.16.0.0/12",
+  "192.168.0.0/16"
+]
+
+# ------------------------------------------------------------------------------
+# SSL Certificate (Optional: Leave null for auto-generated self-signed cert)
+# ------------------------------------------------------------------------------
+# ssl_certificate = <<-EOT
+# -----BEGIN CERTIFICATE-----
+# ...
+# -----END CERTIFICATE-----
+# EOT
+
+# ssl_private_key = <<-EOT
+# -----BEGIN RSA PRIVATE KEY-----
+# ...
+# -----END RSA PRIVATE KEY-----
+# EOT
+
+# ------------------------------------------------------------------------------
+# Test Client Instance
+# ------------------------------------------------------------------------------
+enable_client_vm = true
