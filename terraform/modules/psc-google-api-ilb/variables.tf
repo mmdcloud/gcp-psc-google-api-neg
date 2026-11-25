@@ -49,7 +49,7 @@ variable "proxy_subnet_cidr" {
 }
 
 variable "psc_target_service" {
-  description = "The Google API target service endpoint. Examples: 'storage.googleapis.com' (Cloud Storage), 'cloudkms.us-central1.rep.googleapis.com' (Regional Cloud KMS), 'bigquery.googleapis.com'."
+  description = "The target Google API service endpoint. For Regional Backend Services, this must be a regional endpoint in the same region, formatted as '<service>.<region>.rep.googleapis.com' (e.g. 'storage.us-central1.rep.googleapis.com' or 'cloudkms.us-central1.rep.googleapis.com')."
   type        = string
 }
 

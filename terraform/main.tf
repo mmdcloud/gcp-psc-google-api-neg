@@ -1,12 +1,6 @@
-# ==============================================================================
-# Production-Grade Architecture:
-# Private Service Connect Google API Backend via Reusable Modules
-# ==============================================================================
-
 # ------------------------------------------------------------------------------
-# 1. VPC NETWORKING (Using Reusable VPC Module)
+# VPC Configuration
 # ------------------------------------------------------------------------------
-
 module "vpc" {
   source = "./modules/vpc"
 
@@ -77,9 +71,8 @@ module "vpc" {
 }
 
 # ------------------------------------------------------------------------------
-# 2. PSC GOOGLE API LOAD BALANCER (Using Reusable PSC Module)
+# PSC GOOGLE API LOAD BALANCER 
 # ------------------------------------------------------------------------------
-
 module "psc_google_api_ilb" {
   source = "./modules/psc-google-api-ilb"
 
@@ -101,7 +94,7 @@ module "psc_google_api_ilb" {
   dns_domain        = var.dns_domain
 
   # Security and Observability
-  enable_cloud_armor       = true
+  enable_cloud_armor       = false
   allowed_client_ip_ranges = var.cloud_armor_allowed_ip_ranges
   enable_logging           = true
   log_sample_rate          = 1.0
@@ -112,9 +105,8 @@ module "psc_google_api_ilb" {
 }
 
 # ------------------------------------------------------------------------------
-# 3. OPTIONAL VERIFICATION CLIENT VM
+# OPTIONAL VERIFICATION CLIENT VM
 # ------------------------------------------------------------------------------
-
 resource "google_compute_instance" "client_vm" {
   count        = var.enable_client_vm ? 1 : 0
   name         = "${var.name_prefix}-test-client"

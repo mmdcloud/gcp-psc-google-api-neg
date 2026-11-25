@@ -30,7 +30,6 @@ resource "google_compute_region_network_endpoint_group" "psc_neg" {
   name                  = "${var.name_prefix}-psc-neg"
   project               = var.project_id
   region                = var.region
-  network               = var.network_id
   network_endpoint_type = "PRIVATE_SERVICE_CONNECT"
   psc_target_service    = var.psc_target_service
 

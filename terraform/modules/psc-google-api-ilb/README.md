@@ -47,7 +47,7 @@ Production-grade, reusable Terraform module to deploy a **Private Service Connec
 
 ## Usage Examples
 
-### Example 1: Multi-Regional API (Google Cloud Storage)
+### Example 1: Regional Cloud Storage in us-central1
 
 ```hcl
 module "storage_psc_backend" {
@@ -60,7 +60,7 @@ module "storage_psc_backend" {
   subnetwork_id        = module.vpc.subnet_ids["workload-subnet"]
   proxy_only_subnet_id = module.vpc.subnet_ids["proxy-subnet"]
 
-  psc_target_service   = "storage.googleapis.com"
+  psc_target_service   = "storage.us-central1.rep.googleapis.com"
   custom_domain        = "storage.internal.example.com"
   create_dns_record    = true
   dns_zone_name        = "internal-corp-zone"

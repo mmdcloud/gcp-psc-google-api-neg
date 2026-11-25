@@ -42,8 +42,8 @@ variable "proxy_subnet_cidr" {
 
 variable "psc_target_service" {
   type        = string
-  description = "The target Google API service for the PSC NEG. Examples: 'storage.googleapis.com' (multi-regional Cloud Storage), 'cloudkms.us-central1.rep.googleapis.com' (regional Cloud KMS)."
-  default     = "storage.googleapis.com"
+  description = "The target Google API service for the PSC NEG. For Regional Backend Services, this MUST be a regional endpoint in the same region, formatted as '<service>.<region>.rep.googleapis.com' (e.g. 'storage.us-central1.rep.googleapis.com' or 'cloudkms.us-central1.rep.googleapis.com')."
+  default     = "storage.us-central1.rep.googleapis.com"
 }
 
 variable "dns_zone_name" {
